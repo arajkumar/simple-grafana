@@ -1,16 +1,23 @@
+This is a fork of [cirocosta/sample-grafana.git](https://github.com/cirocosta/sample-grafana.git)
+
 ### Usage
 
+#### Bring Grafana with default dashboard
 ```sh
-make  run                 # builds grafana and prometheus 
-                          # images and initializes all three containers 
-                          # that forms the infra (grafana, prometheus and 
-                          # node_exporter).  
-
-make  update-dashboards   # updates the list of json files that represent
-                          # the dashboards configured in Grafana.
-
+make up
 ```
 
-### More
+#### Bring Grafana with custom dashboard directory & prometheus
+```sh
+make up DASHBOARDS_DIRECTORY=<path to dashboards dir> PROMETHEUS_URL=http://localhost:9090
+```
 
-See [Initializing Grafana with preconfigured dashboards](https://ops.tips/blog/initialize-grafana-with-preconfigured-dashboards/).
+#### Tail logs
+```sh
+make logs
+```
+
+#### Teardown Grafana
+```sh
+make down
+```

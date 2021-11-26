@@ -1,9 +1,9 @@
 datasources:
-- name: 'prom1'
+- name: 'prometheus'
   type: 'prometheus'
   access: 'proxy'
   org_id: 1
-  url: 'http://prometheus:9090'
+  url: '${PROMETHEUS_URL}'
   is_default: true
   version: 1
   editable: true

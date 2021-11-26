@@ -1,7 +1,15 @@
-run:
-	docker-compose up -d --build
+DASHBOARDS_DIRECTORY ?= grafana/dashboards
+PROMETHEUS_URL ?= "http://localhost:9090"
 
-update-dashboards:
-	./update-dashboards.sh
+.PHONY: up
+up:
+	@envsubst < grafana/provisioning/datasources/all.yml.in > grafana/provisioning/datasources/all.yml
+	@docker-compose up -d
 
-.PHONY: run update-dashboards
+.PHONY: down
+down:
+	@docker-compose down
+
+.PHONY: logs
+logs:
+	@docker-compose logs -f
